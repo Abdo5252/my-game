@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 50px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My Game 🏝️</h1>
+    <p>There are two doors in front of you, a red door 🔴 and a blue door 🔵.</p>
+
+    <button onclick="chooseDoor('blue')">Blue Door</button>
+    <button onclick="chooseDoor('red')">Red Door</button>
+
+    <div id="result"></div>
+
+    <script>
+        function chooseDoor(door) {
+            var resultDiv = document.getElementById("result");
+            if (door === "blue") {
+                resultDiv.innerHTML = "Oops! You chose the crocodile door 🐊🐊🐊, the game is over!";
+                return; // End the game
+            } else if (door === "red") {
+                resultDiv.innerHTML = "You chose the red door. Now choose a box:";
+                resultDiv.innerHTML += `
+                    <button onclick="chooseBox('white')">White Box ⬜</button>
+                    <button onclick="chooseBox('black')">Black Box ⬛</button>
+                    <button onclick="chooseBox('green')">Green Box 🟩</button>
+                `;
+            } else {
+                resultDiv.innerHTML = "Invalid choice! 🤷‍♂️";
+            }
+        }
+
+        function chooseBox(box) {
+            var resultDiv = document.getElementById("result");
+            if (box === "white") {
+                resultDiv.innerHTML = "Oops! You opened the white box and found snakes 🐍🐍🐍.";
+            } else if (box === "black") {
+                resultDiv.innerHTML = "Oops! You opened the black box and found spiders 🕷️🕷️.";
+            } else if (box === "green") {
+                resultDiv.innerHTML = "Congratulations! You found the treasure 🏆.";
+            } else {
+                resultDiv.innerHTML = "Invalid choice! 🤷‍♂️";
+            }
+        }
+    </script>
+
+</body>
+</html>
